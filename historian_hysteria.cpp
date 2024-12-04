@@ -1,3 +1,8 @@
+/*
+    nazwa: Day 1: Historian Hysteria
+    autor: Dominik Łempicki Kapitan
+*/
+
 #include<iostream>
 #include<vector>
 #include<algorithm>
@@ -16,28 +21,17 @@ int main() {
     }
 
     unsigned long long suma{};
-    for(int i{};i<n;++i){
-        suma+=licznikWystopien[liczbylewe[i].first]*liczbylewe[i].first;
-        //std::cout <<liczbylewe[i].first << ' ' << licznikWystopien[liczbylewe[i].first] << '\n';
-    }
+    for(int i{};i<n;++i) suma+=licznikWystopien[liczbylewe[i].first]*liczbylewe[i].first;
 
     std::cout << suma;
 
+    std::sort(liczbylewe.begin(),liczbylewe.end(),[&](const auto &a,const auto &b){return a.first < b.first || (a.first == b.first && a.second > b.second);});
 
-  /*  std::sort(liczbylewe.begin(),liczbylewe.end(),[&](const auto &a,const auto &b){
-        return a.first < b.first || (a.first == b.first && a.second > b.second);
-    });
+    std::sort(liczbyprawe.begin(),liczbyprawe.end(),[&](const auto &a,const auto &b){return a.first < b.first || (a.first == b.first && a.second > b.second);});
 
-    std::sort(liczbyprawe.begin(),liczbyprawe.end(),[&](const auto &a,const auto &b){
-        return a.first < b.first || (a.first == b.first && a.second > b.second);
-    });
-
-    unsigned long long suma{};
-    for(int i{};i<n;++i){
-        suma += std::abs(liczbylewe[i].first - liczbyprawe[i].first);
-       // std::cout << liczbylewe[i].first << ' ' << liczbyprawe[i].first << '\n';
-    }
+    suma = 0;
+    for(int i{};i<n;++i)suma += std::abs(liczbylewe[i].first - liczbyprawe[i].first);
     
-    std::cout << suma;-**/
+    std::cout <<' '<< suma;
     return 0;
 }
