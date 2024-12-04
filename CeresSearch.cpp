@@ -3,7 +3,6 @@
     autor: Dominik Łempicki Kapitan
 */
 
-
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -58,6 +57,34 @@ unsigned long long liczbaWystopien(const std::vector<std::string>& plansza, cons
     return suma;
 }
 
+unsigned long long liczbaWystopienxmas(const std::vector<std::string>& plansza) {
+    unsigned long long suma = 0;
+
+    for (int i{1}; i < plansza.size() - 1; ++i) {
+        for (int j{1}; j < plansza[0].size() - 1; ++j) {
+            if (plansza[i][j] == 'A') {
+                if ((plansza[i - 1][j - 1] == 'M' && plansza[i - 1][j + 1] == 'M')) {
+                    if ((plansza[i + 1][j - 1] == 'S' && plansza[i + 1][j + 1] == 'S')) ++suma;
+                }
+
+                if((plansza[i - 1][j - 1] == 'S' && plansza[i - 1][j + 1] == 'S')){
+                    if((plansza[i + 1][j - 1] == 'M' && plansza[i + 1][j + 1] == 'M')) ++suma;
+                }
+
+                if ((plansza[i - 1][j - 1] == 'S' && plansza[i + 1][j - 1] == 'S')) {
+                    if ((plansza[i + 1][j + 1] == 'M' && plansza[i - 1][j + 1] == 'M'))  ++suma;
+                }
+
+                if((plansza[i - 1][j - 1] == 'M' && plansza[i + 1][j - 1] == 'M')){
+                    if((plansza[i + 1][j + 1] == 'S' && plansza[i - 1][j + 1] == 'S')) ++suma;
+                }
+            }
+        }
+    }
+
+    return suma;
+}
+
 int main() {
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
@@ -65,10 +92,9 @@ int main() {
     std::vector<std::string> plansza;
     std::string tmp;
 
-
     while (std::cin >> tmp) plansza.push_back(tmp);
-    
-    std::cout << liczbaWystopien(plansza, "XMAS");
+
+    std::cout << liczbaWystopien(plansza, "XMAS") << ' ' << liczbaWystopienxmas(plansza);
 
     return 0;
 }
