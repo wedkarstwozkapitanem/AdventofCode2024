@@ -1,5 +1,8 @@
+/*
+    nazwa: Day 3: Mull It Over
+    autor: Dominik Kapitan Łempicki
+*/
 #include<iostream>
-
 
 bool mul(const std::string &txt,const int poczotek){
     char instrukcja[] {'m','u','l','('};
