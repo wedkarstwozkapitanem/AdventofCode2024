@@ -1,3 +1,8 @@
+/*
+    nazwa: Day 2: Red-Nosed Reports
+    autor: Dominik Łempicki Kapitan
+*/
+
 #include<iostream>
 #include<vector>
 
