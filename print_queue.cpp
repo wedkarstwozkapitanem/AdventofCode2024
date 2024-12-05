@@ -8,6 +8,7 @@
 #include <set>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 std::map<long long, std::set<long long>> wczytajZasadyKolejnosci() {
     std::string tmp;
@@ -33,7 +34,26 @@ std::map<long long, std::set<long long>> wczytajZasadyKolejnosci() {
 
 
 
-bool czyPoprawny(const std::vector<long long> &liczby,std::map<long long, std::set<long long>> &zasadyKolejnosci) {
+void poprawKolejnosc(std::vector<long long> &liczby, std::map<long long, std::set<long long>> &zasadyKolejnosci) {
+    bool poprawny = false;
+    while (!poprawny) {
+        poprawny = true;
+        for (int i = 0; i < liczby.size(); i++) {
+            long long liczba = liczby[i];
+            for (const auto &p : zasadyKolejnosci[liczba]) {
+                auto it = std::find(liczby.begin(), liczby.begin() + i, p);
+                if (it != liczby.begin() + i) {
+                    poprawny = false;
+                    int pos = std::distance(liczby.begin(), it);
+                    std::swap(liczby[i], liczby[pos]);
+                }
+            }
+        }
+    }
+}
+
+
+bool czyPoprawny(std::vector<long long> &liczby,std::map<long long, std::set<long long>> &zasadyKolejnosci) {
         std::set<long long> doodwiedzenia;
 
         for (int i = 0; i < liczby.size(); i++) {
@@ -41,7 +61,10 @@ bool czyPoprawny(const std::vector<long long> &liczby,std::map<long long, std::s
 
             for (const auto& p : zasadyKolejnosci[liczba]) doodwiedzenia.insert(p);
             auto iterator = doodwiedzenia.find(liczba);
-            if (liczba == *iterator && iterator != doodwiedzenia.end()) return false;
+            if (liczba == *iterator && iterator != doodwiedzenia.end()){
+                poprawKolejnosc(liczby,zasadyKolejnosci);
+                return false;
+            }
         }
 
         return true;
@@ -65,7 +88,6 @@ std::pair<unsigned long long,unsigned long long> stronyDoUtworzenia() {
         }
 
         (czyPoprawny(liczby,zasadyKolejnosci)) ? sumaPoprawnych += liczby[liczby.size() / 2] : sumaBlednych += liczby[liczby.size() / 2];
-        if(!czyPoprawny(liczby,zasadyKolejnosci)) std::cout << liczby[liczby.size() / 2] << '\n';
     }
     return {sumaPoprawnych,sumaBlednych};
 }
