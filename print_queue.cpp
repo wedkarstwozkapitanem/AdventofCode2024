@@ -47,8 +47,8 @@ bool czyPoprawny(const std::vector<long long> &liczby,std::map<long long, std::s
         return true;
 }
 
-unsigned long long stronyDoUtworzenia() {
-    unsigned long long suma = 0;
+std::pair<unsigned long long,unsigned long long> stronyDoUtworzenia() {
+    unsigned long long sumaPoprawnych{},sumaBlednych{};
 
     auto zasadyKolejnosci = wczytajZasadyKolejnosci();
 
@@ -64,19 +64,17 @@ unsigned long long stronyDoUtworzenia() {
             ++i;
         }
 
-        if (czyPoprawny(liczby,zasadyKolejnosci)) {
-            suma += liczby[liczby.size() / 2];
-        }
+        (czyPoprawny(liczby,zasadyKolejnosci)) ? sumaPoprawnych += liczby[liczby.size() / 2] : sumaBlednych += liczby[liczby.size() / 2];
+        if(!czyPoprawny(liczby,zasadyKolejnosci)) std::cout << liczby[liczby.size() / 2] << '\n';
     }
-
-    return suma;
+    return {sumaPoprawnych,sumaBlednych};
 }
 
 
 int main() {
     std::ios_base::sync_with_stdio(0);
     std::cin.tie(0);
-
-    std::cout << stronyDoUtworzenia() << "\n";
+    const auto wynik = stronyDoUtworzenia();
+    std::cout << wynik.first << ' ' << wynik.second <<  "\n";
     return EXIT_SUCCESS;
 }
