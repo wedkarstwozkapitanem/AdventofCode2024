@@ -23,13 +23,34 @@ bool czyDaSieUlozycRownanie(const std::vector<long long> &rownanie,const long lo
             if(aktualny.first*rownanie[aktualny.second+1]<=wynik) doPrzetworzenia.push({aktualny.first*rownanie[aktualny.second+1],aktualny.second+1});
         }
     } while ((!doPrzetworzenia.empty()));
+
+    return false;
+}
+
+
+bool czyDaSieUlozycRownanieKonkatenacja(const std::vector<long long> &rownanie,const long long &wynik){
+    std::queue<std::pair<long long,int>> doPrzetworzenia;
+    
+    int i{};
+    doPrzetworzenia.push({rownanie[0],0});
+    do {
+        const auto aktualny = doPrzetworzenia.front();
+        if(aktualny.second==rownanie.size()-1 && aktualny.first == wynik) return true;
+        doPrzetworzenia.pop();
+        if(aktualny.second<rownanie.size()) {
+            if(aktualny.first+rownanie[aktualny.second+1]<=wynik) doPrzetworzenia.push({aktualny.first+rownanie[aktualny.second+1],aktualny.second+1});
+            if(aktualny.first*rownanie[aktualny.second+1]<=wynik) doPrzetworzenia.push({aktualny.first*rownanie[aktualny.second+1],aktualny.second+1});
+            long long konkatenacja = std::stoll(std::to_string(aktualny.first)+std::to_string(rownanie[aktualny.second+1]));
+            if(konkatenacja <= wynik) doPrzetworzenia.push({konkatenacja,aktualny.second+1});
+        }
+    } while ((!doPrzetworzenia.empty()));
     
     return false;
 }
 
 int main(){
     std::ios_base::sync_with_stdio(0),std::cin.tie(0);
-    long long suma{};
+    long long suma{},sumaKonkatenacja{};
     std::vector<long long> rownanie;
 
     std::string linia;
@@ -53,12 +74,12 @@ int main(){
         }
          rownanie.push_back(std::stoll(wynik));
          if(czyDaSieUlozycRownanie(rownanie,wynikDoUtworzenia)) suma += wynikDoUtworzenia;
-
+         if(czyDaSieUlozycRownanieKonkatenacja(rownanie,wynikDoUtworzenia)) sumaKonkatenacja += wynikDoUtworzenia;
          wynik.clear();
          rownanie.clear();
     }
     
-    std::cout << suma;
+    std::cout << suma << ' ' << sumaKonkatenacja;
 
     return EXIT_SUCCESS;
 }
