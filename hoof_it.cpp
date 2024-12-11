@@ -8,29 +8,30 @@
 #include<unordered_map>
 #include<set>
 
-unsigned long long WYNIK{};
+unsigned long long wynikSciezkaRosnoca{},wynikLiczbaSzlakow{};
 
 
-void DFS(const std::vector<std::vector<int>> &plansza,const std::pair<long long,long long> &obecneWspolrzedne, std::unordered_map<long long,std::set<long long>> &odwiedzone){
+void szukanieRosnocegoSzlaku(const std::vector<std::vector<int>> &plansza,const std::pair<long long,long long> &obecneWspolrzedne, std::unordered_map<long long,std::set<long long>> &odwiedzone,bool czyOdwiedzone=false){
     if(!plansza.size()) return;
     std::pair<short,short> kierunki[]{{0,1},{1,0},{0,-1},{-1,0}};
     const long long obecny = plansza[obecneWspolrzedne.first][obecneWspolrzedne.second];
     odwiedzone[obecneWspolrzedne.first].insert(obecneWspolrzedne.second);
     if(obecny==9) {
-        ++WYNIK;
+        if(!czyOdwiedzone) ++wynikSciezkaRosnoca;
+        ++wynikLiczbaSzlakow;
         return;
     };
     for(const auto &kierunek : kierunki) {
         if(obecneWspolrzedne.first + kierunek.first < 0 || obecneWspolrzedne.second+kierunek.second < 0 || obecneWspolrzedne.first + kierunek.first >= plansza.size() || obecneWspolrzedne.second+kierunek.second >= plansza[0].size()) continue;
-        if(odwiedzone[obecneWspolrzedne.first + kierunek.first].find(obecneWspolrzedne.second+kierunek.second) != odwiedzone[obecneWspolrzedne.first + kierunek.first].end()) continue;
-        if(obecny == plansza[obecneWspolrzedne.first + kierunek.first][obecneWspolrzedne.second+kierunek.second]-1) DFS(plansza,{obecneWspolrzedne.first + kierunek.first,obecneWspolrzedne.second+kierunek.second},odwiedzone);
+        else if(obecny == plansza[obecneWspolrzedne.first + kierunek.first][obecneWspolrzedne.second+kierunek.second]-1) (odwiedzone[obecneWspolrzedne.first + kierunek.first].find(obecneWspolrzedne.second+kierunek.second) != odwiedzone[obecneWspolrzedne.first + kierunek.first].end()) ? szukanieRosnocegoSzlaku(plansza,{obecneWspolrzedne.first + kierunek.first,obecneWspolrzedne.second+kierunek.second},odwiedzone,true) : szukanieRosnocegoSzlaku(plansza,{obecneWspolrzedne.first + kierunek.first,obecneWspolrzedne.second+kierunek.second},odwiedzone);
     }
 }
 
 
+
 void startDFS(const std::vector<std::vector<int>> &plansza,const std::pair<long long,long long> &obecneWspolrzedne){
-    std::unordered_map<long long,std::set<long long>> odwiedzone;
-    DFS(plansza,obecneWspolrzedne,odwiedzone);
+    std::unordered_map<long long,std::set<long long>> odwiedzone,odwiedzoneSzlaki;
+    szukanieRosnocegoSzlaku(plansza,obecneWspolrzedne,odwiedzone);
 }
 
 int main() {
@@ -54,7 +55,7 @@ int main() {
 
     for(const auto &i : poczotkiPlanszy)  startDFS(plansza,i);
 
-    std::cout << WYNIK;
+    std::cout << wynikSciezkaRosnoca << ' ' << wynikLiczbaSzlakow;
 
     return EXIT_SUCCESS;
 }
