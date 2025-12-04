@@ -51,7 +51,7 @@ W zależności jakiego języka programowania używasz oraz jaki się znajduję w
 
 g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
 
-./solution1
+./solution1 < test.in
 
 ```
 
@@ -61,7 +61,7 @@ g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
 
 g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
 
-./solution2
+./solution2 < test.in
 
 ```
 
@@ -78,8 +78,8 @@ g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
 
 ```bash
 
-py solution_part_1.py
-py solution_part_2.py
+py solution_part_1.py < test.in
+py solution_part_2.py < test.in
 
 ```
 
