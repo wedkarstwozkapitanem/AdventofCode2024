@@ -33,22 +33,55 @@ Zadania nie są kopiowane zgodnie z regulaminem AoC.
 
 ## 🚀 Jak uruchomić
 
-Przykładowa kompilacja:
+Przed uruchomieniem przejdź do katalogu danego dnia:
+
+```bash
+
 cd day_ + numer zadania
 
-### c++:
+```
+
+W zależności jakiego języka programowania używasz oraz jaki się znajduję w wybranym folderze (cpp, py, rs):
+
+### C++:
+
+#### Part 1:
+
+```bash
 
 g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
 
-g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
-
 ./solution1
+
+```
+
+#### Part 2:
+
+```bash
+
+g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
 
 ./solution2
 
-### python:
+```
+
+
+
+
+
+
+
+
+
+
+### Python:
+
+```bash
 
 py solution_part_1.py
+py solution_part_2.py
+
+```
 
 ## 🎯 Cele
 
