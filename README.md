@@ -36,7 +36,7 @@ Zadania nie są kopiowane zgodnie z regulaminem AoC.
 Przykładowa kompilacja:
 cd day_ + numer zadania
 
-### c++
+### c++:
 
 g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
 g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
