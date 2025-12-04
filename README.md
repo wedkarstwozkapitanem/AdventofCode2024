@@ -39,8 +39,11 @@ cd day_ + numer zadania
 ### c++:
 
 g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
+
 g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
+
 ./solution1
+
 ./solution2
 
 ### python:
