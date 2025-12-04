@@ -37,7 +37,7 @@ Codzienne rozwiązywanie zadań
 
 Poprawa analitycznego myślenia
 
-Szlifowanie wydajnościowego C++
+Szlifowanie wydajnościowego C++ oraz innych języków programowania
 
 Budowanie nawyku systematycznej pracy
 
