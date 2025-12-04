@@ -2,13 +2,15 @@
 
 Repozytorium zawiera moje rozwiązania z Advent of Code.
 Każdy dzień z 2025 roku posiada osobny folder (Day_1, Day_2, …)
-Znajdują się tu też moje ubiegłoroczne rozwiązania
+
+Znajdują się tu też moje rozwiązania tych zagadek z ubiegłych lat w katalogach z datą
 
 Zadania nie są kopiowane zgodnie z regulaminem AoC.
 
 ## 📂 Struktura katalogów
 
 2025/
+
   Day_1/
     solution_part_1.cpp
     solution_part_2.cpp
@@ -18,6 +20,10 @@ Zadania nie są kopiowane zgodnie z regulaminem AoC.
      solution_part_2.py
     
   ...
+
+  2024/
+
+  nazwa_zadania.cpp
 
 ## 🛠️ Technologie:
 1. c++23 (głównie g++ 14.2.0 (MSYS2))
