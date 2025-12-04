@@ -1,4 +1,4 @@
-# 📅 Advent of Code – Solutions
+# 🕯️ Advent of Code – Solutions
 
 Repozytorium zawiera moje rozwiązania z Advent of Code.
 Każdy dzień z 2025 roku posiada osobny folder (Day_1, Day_2, …)
@@ -7,10 +7,12 @@ Znajdują się tu też moje ubiegłoroczne rozwiązania
 Zadania nie są kopiowane zgodnie z regulaminem AoC.
 
 # 📂 Struktura katalogów
+
 2025/
   Day_1/
     solution_part_1.cpp
     solution_part_2.cpp
+
   Day_2/
      solution_part_1.py
      solution_part_2.py
@@ -28,7 +30,9 @@ Zadania nie są kopiowane zgodnie z regulaminem AoC.
 Przykładowa kompilacja:
 
 g++ solution_part_1.cpp -O3 -std=c++23 -o day1
+
 ./day1
+
 py solution_part_1.py
 
 # 🎯 Cele
