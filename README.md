@@ -3,7 +3,7 @@
 Repozytorium zawiera moje rozwiązania z Advent of Code.
 Każdy dzień z 2025 roku posiada osobny folder (Day_1, Day_2, …)
 
-Znajdują się tu też moje rozwiązania tych zagadek z ubiegłych lat w katalogach z datą
+Znajdują się tu też moje rozwiązania tych zagadek z ubiegłych lat w folderach z datą
 
 Zadania nie są kopiowane zgodnie z regulaminem AoC.
 
@@ -36,9 +36,14 @@ Zadania nie są kopiowane zgodnie z regulaminem AoC.
 Przykładowa kompilacja:
 cd day_ + numer zadania
 
-g++ solution_part_1.cpp -O3 -std=c++23 -o solution
+### c++
 
-./solution
+g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
+g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
+./solution1
+./solution2
+
+### python:
 
 py solution_part_1.py
 
