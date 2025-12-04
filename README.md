@@ -41,6 +41,8 @@ cd day_ + numer zadania
 
 ```
 
+Uzupełnij lub utwórz pliki test.in swoimi danymi wejściowymi
+
 W zależności jakiego języka programowania używasz oraz jaki się znajduję w wybranym folderze (cpp, py, rs):
 
 ### C++:
