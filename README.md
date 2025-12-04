@@ -47,6 +47,8 @@ W zależności jakiego języka programowania używasz oraz jaki się znajduję w
 
 #### Part 1:
 
+##### Linux:
+
 ```bash
 
 g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
@@ -65,6 +67,27 @@ g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
 
 ```
 
+##### Windows:
+
+```bash
+
+g++ solution_part_1.cpp -O3 -std=c++23 -o solution1
+
+Get-Content test.in | ./solution1
+
+```
+
+#### Part 2:
+
+```bash
+
+g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
+
+
+Get-Content test.in | ./solution1
+
+```
+
 
 
 
@@ -76,12 +99,25 @@ g++ solution_part_2.cpp -O3 -std=c++23 -o solution2
 
 ### Python:
 
+##### Linux:
+
 ```bash
 
 py solution_part_1.py < test.in
 py solution_part_2.py < test.in
 
 ```
+
+##### Windows:
+
+
+```bash
+
+Get-Content test.in | py solution_part_1.py
+Get-Content test.in | py solution_part_2.py
+
+```
+
 
 ## 🎯 Cele
 
